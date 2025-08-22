@@ -61,8 +61,7 @@ See two below artifacts to better understand the expected Agent behavior.
 
 ### Clone the project 
 ```bash
-git clone https://github.com/aws-samples/sample-serverless-mcp-servers.git
-cd sample-serverless-mcp-servers/strands-agent-on-lambda
+git clone git@github.com:sjpandruju/aws-strands-agent.git
 ```
 
 ### Install dependencies
