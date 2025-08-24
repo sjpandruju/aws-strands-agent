@@ -7,6 +7,9 @@ import mcp_client_manager
 import tools
 from agent_config import model, system_prompt
 
+# Disable OpenTelemetry metrics to avoid AWS access issues
+os.environ['OTEL_SDK_DISABLED'] = 'true'
+
 l = logging.getLogger(__name__)
 l.setLevel(logging.INFO)
 
@@ -38,9 +41,6 @@ def prompt(user: User, composite_prompt: str):
         return response_text
 
     except Exception as e:
-
-        l.info(type(e))
-
-        # l.error(e)
-        return 'Failed to initialize MCP Client, see logs'
+        l.error(f"Error in agent prompt: {type(e).__name__}: {str(e)}", exc_info=True)
+        return f'Failed to initialize agent: {type(e).__name__}: {str(e)}'
 
